@@ -7,34 +7,58 @@
 	<div class="header">
 		<h1>Welcome To My AmazonBooks Categories By Events</H1>
 		<p>
+			<h2>Introduction</h2>
+			<p>	
 			In this tutorial you will learn about my API functionnality.<br>
 			Don't worry it's very easy.<br>
-			In my API, you can make http requests:
+			This API allows you to find Categories of books.<br>
+			The Json file contains 3 categories of sort of books:
+			recommended books, notsold books and bestseller books.<br>
+			Each category has a few properties, in particular has an array of subcategories that contains books by genre.<br>
+			For example, in the best seller category, we have subcategories like that each one has an id (e.g "89"), a subject (e.g "action"), a status (e.g "A") and finally  a number of books (e.g "50000");  <br>
+			All you have to do is to make a http get/put/post valid request to get informations. <br> 
+			</p><br><br>
 
+			<h2>API Http Requests explanation</h2>	
+			<p>	
 			<ul>
-				<li>https://targil1part1.herokuapp.com/categories</li>
+				<li type="square">https://targil1part1.herokuapp.com/categories</li>
 				<p>This route will is a http GET request that will return you all the categories that are available.<br> 
 				<span>Doesn't require ANY PARAMETER</span></p>
-				<li>https://targil1part1.herokuapp.com/categories/:category_id</li>
+				<li type="square">https://targil1part1.herokuapp.com/categories/:category_id</li>
 				<p>This route will is a http GET request that will return you a specific category by ID search.<br>
 				<span>Here you must pass ONE PARAMETER: "category_id"</span></p>
-				<li>https://targil1part1.herokuapp.com/categories/:status/:subject</li>
+				<li type="square">https://targil1part1.herokuapp.com/categories/:status/:subject</li>
 				<p>This route will is a http GET request that will return you a specific category that one of its subcategries status is the status parameter that you sent and that its subject is the subject that you send in query string.<br>
 				<span>Here you must pass TWO PARAMETERS: "status" + "subject"</span></p>
-				<li>https://targil1part1.herokuapp.com/categorybyname</li>
+				<li type="square">https://targil1part1.herokuapp.com/categorybyname</li>
 				<p>This route will is a http POST request that will return you a specific category that its name is the name parameter that you sent in query string.  <br>
 				<span>Here you must pass A JSON IN BODY REQUEST e.g : <br>
 				"categoryname": "[name of the wanted category]"<br>
 				Don't forget Its a POST HTTP REQUEST</span></p>
-				<li>https://targil1part1.herokuapp.com/ccategory/subcategory/updatenumberofbooks</li>
+				<li type="square">https://targil1part1.herokuapp.com/ccategory/subcategory/updatenumberofbooks</li>
 				<p>This route will is a http PUT request that will return you a specific category after that its number-of-book of one of its subcategories was updated to the number that you sent in your body request.<br>
 				<span>Here you must pass A JSON IN BODY REQUEST with 2 FIELDS e.g : <br>
 				"subcategoryid": "[id of the subcategory wanted]"<br>
 				"newnumberofbooks": "[number of books wanted]"<br>
 				Don't forget Its a PUT HTTP REQUEST</span></p>
-				
-		</p>
-		<p style="font-size: 25px!important; color:lightblue;">You have troubles with my API, let me help you <a href="mailto:mickaebenaroch@yahoo.fr?Subject=Hello%20again" target="_top">Send Me Mail</a></p>
+			</ul>
+		</p><br><br>
+
+		<h2>Debbuging</h2>
+		<p>
+			You made request and encontered troubles?<br>
+			1 - CHECK THE ROUTE, it has to be identical to the route you choose in this page.<br>
+			2 - CHECK THE QUERY STRING PARAMETERS that you are sending, if you are using postman the key of the parameters has to be identical to those in the specific route explanation. <br>
+			3- CHECK THE BODY REQUEST, if you are doing a post or put request, send exactly what the route requires.<br> 
+		</p><br><br>
+
+		<h2>Help</h2>
+		<p class="help">
+			You have troubles with my API, let me help you 
+			<a href="mailto:mickaebenaroch@yahoo.fr?Subject=Hello%20again" target="_top">		Send Me Mail
+			</a>
+		</p><br><br>
 	</div>
 	<footer>By Mickael B.</footer>
 </body>

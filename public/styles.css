@@ -6,9 +6,13 @@ body{
 	background-color: beige;
 }
 
+p{
+	padding-left: 30px !important;
+}
+
 .header{
 	position: relative;
-    top: 294px;
+    top: 370px;
 }
 
 .header h1{
@@ -21,16 +25,29 @@ body{
 .header p{
 	font-size: 30px;
 	font-family: Assistant;
-	padding-left: 30px;
+	padding-left: 40px;
+}
+
+.help{
+	font-size: 25px!important; 
+	color:lightblue;
 }
 
 li{
 	font-size: 25px;
     color: indianred;
+    padding-left: 50px;
 }
 
 span{
 	background: yellow;
+}
+
+h2{
+	font-size: 38px;
+	font-family: Assistant;
+	padding-left: 30px;
+	color: red;
 }
 
 footer{
@@ -39,4 +56,5 @@ footer{
     top: 350px;
     text-align: center;
     font-size: 41px;
+    margin-bottom: 100px;
 }
