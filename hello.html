@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+	<div class="header">
+		<h1>Welcome To My AmazonBooks Categories By Events</H1>
+		<p>
+			In this tutorial you will learn about my API functionnality.<br>
+			Don't worry it's very easy.<br>
+			In my API, you can make http requests:
+
+			<ul>
+				<li>https://targil1part1.herokuapp.com/categories</li>
+				<p>This route will is a http GET request that will return you all the categories that are available.<br> 
+				<span>Doesn't require ANY PARAMETER</span></p>
+				<li>https://targil1part1.herokuapp.com/categories/:category_id</li>
+				<p>This route will is a http GET request that will return you a specific category by ID search.<br>
+				<span>Here you must pass ONE PARAMETER: "category_id"</span></p>
+				<li>https://targil1part1.herokuapp.com/categories/:status/:subject</li>
+				<p>This route will is a http GET request that will return you a specific category that one of its subcategries status is the status parameter that you sent and that its subject is the subject that you send in query string.<br>
+				<span>Here you must pass TWO PARAMETERS: "status" + "subject"</span></p>
+				<li>https://targil1part1.herokuapp.com/categorybyname</li>
+				<p>This route will is a http POST request that will return you a specific category that its name is the name parameter that you sent in query string.  <br>
+				<span>Here you must pass A JSON IN BODY REQUEST e.g : <br>
+				"categoryname": "[name of the wanted category]"<br>
+				Don't forget Its a POST HTTP REQUEST</span></p>
+				<li>https://targil1part1.herokuapp.com/ccategory/subcategory/updatenumberofbooks</li>
+				<p>This route will is a http PUT request that will return you a specific category after that its number-of-book of one of its subcategories was updated to the number that you sent in your body request.<br>
+				<span>Here you must pass A JSON IN BODY REQUEST with 2 FIELDS e.g : <br>
+				"subcategoryid": "[id of the subcategory wanted]"<br>
+				"newnumberofbooks": "[number of books wanted]"<br>
+				Don't forget Its a PUT HTTP REQUEST</span></p>
+				
+		</p>
+		<p style="font-size: 25px!important; color:lightblue;">You have troubles with my API, let me help you <a href="mailto:mickaebenaroch@yahoo.fr?Subject=Hello%20again" target="_top">Send Me Mail</a></p>
+	</div>
+	<footer>By Mickael B.</footer>
+</body>
+</html>

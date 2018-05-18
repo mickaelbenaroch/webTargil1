@@ -1,0 +1,42 @@
+body{
+	background-image: url("includes/amazon.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+    background-position: 10% 5%;
+	background-color: beige;
+}
+
+.header{
+	position: relative;
+    top: 294px;
+}
+
+.header h1{
+	font-size: 59px;
+    text-align: center;
+    color: lightblue;
+    font-family: Assistant;
+}
+
+.header p{
+	font-size: 30px;
+	font-family: Assistant;
+	padding-left: 30px;
+}
+
+li{
+	font-size: 25px;
+    color: indianred;
+}
+
+span{
+	background: yellow;
+}
+
+footer{
+	color: lightblue;
+    position: relative;
+    top: 350px;
+    text-align: center;
+    font-size: 41px;
+}

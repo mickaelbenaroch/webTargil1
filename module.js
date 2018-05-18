@@ -6,6 +6,10 @@ const express 		= require('express'),
 	  url			= require('url'),
 	  port    		= process.env.PORT || 3000;
 
+//Indicates where is the css file of the index.html located
+app.use('/assets', express.static(`${__dirname}/public`));
+app.use('/images', express.static(`${__dirname}/includes`));
+
 //Instance of the class that contains functionnality for each route
 var functionality = require('./functionality.js');
 
@@ -19,6 +23,10 @@ app.all('*',
 		functionality.midleware();
 		next();
 	});
+
+app.get('/', (req, res) => {
+	res.sendFile(`${__dirname}/hello.html`)
+})
 
 //Get All Categories
 app.get('/categories', (req, res) => {
@@ -47,7 +55,7 @@ app.post('/categorybyname',
 		var response = functionality.getCategoryByPostId(category);
 		res.json({"category found": response});
 	});
-
+  
 //Put request to change number of books of category's subcategory 
 app.put('/category/subcategory/updatenumberofbooks', 
 	(req, res) => {
