@@ -1,10 +1,15 @@
-var data = require("./data/category.json");
+var consts = require('./consts');
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
+//define the model
+var group = require('./categories');
 
 //I choose to create a Class that contains all the functionnality 
 //to do for each route an return result to the module that calls it
 
 class Functionality{
+
 
 	constructor(){};
 	//Executed on get always
@@ -13,113 +18,103 @@ class Functionality{
 	}
 
 	//Executes on get /categories
-	getAllCategories(){
-		console.log('get: all categories!');
-		var categories = data.categories;
-		console.log("data: " + categories);
-		return categories;
+	getAllCategories()
+	{
+		mongoose.connect(consts.MLAB_KEY);
+        return new Promise((resulve , reject)=>{
+
+            group.find({} , (err , category)=>{
+
+                if(err){
+
+                    reject(`error : ${err}`);
+
+                }else{
+
+                    console.log('<-getAllCustomers->\n' + category);
+
+                    resulve(category);
+
+                }
+
+            });
+
+        });
 	}
+ 
 
 	//Executed on get /categories/:category_id
 	getCategoryById(catid){
-		console.log('get: category by id');
-		let foundCategory= false;
-		for(let i in data.categories){
-			var CatFound = data.categories[i].categoryid;
-			if(CatFound == catid){
-				foundCategory = true;
-				return data.categories[i];
-			}
-		}
-		if(!foundCategory){
-			var notfound = "category not found";
-			return notfound;
-			}
-		}
+        mongoose.connect(consts.MLAB_KEY);
+        return new Promise((resulve , reject)=>{
+            group.findOne({ 'categoryid': catid }, (err , category)=>{
 
-	//Executes on get /categories/:status/:subject
+                if(err){
+
+                    reject(`error : ${err}`);
+
+                }else{
+
+                    console.log('<-getAllCustomers->\n' + category);
+
+                    resulve(category);
+
+                }
+
+            });
+
+        });
+    }
+
+	//Executes on get /subcategories/:status/:subject
 	getCategoriesStatusAndSubject(status, subject){
-		console.log(`get: which categories with subject ${subject} and status ${status}`);
-		let foundCategory= false;
-		for(let i in data.categories){
+        mongoose.connect(consts.MLAB_KEY);
+        return new Promise((resulve , reject)=>{
+            group.findOne({ "subcategories": { "$elemMatch": { "status": status, "subject": subject  } } } , (err , category)=>{
 
-			for(let j in data.categories[i].subcategories){
+                if(err){
 
-				//Variable for status comparaision
-				var CatFound  = data.categories[i].subcategories[j].status;
-				
-				//Variable for numberofbooks comparaision
-				var CatFound2 = data.categories[i].subcategories[j].subject; 
-				
-				//Runs on each status and numberofbooks and compares
-				if((CatFound == status) && (CatFound2 == subject)) {
-					foundCategory = true;
-					return data.categories[i];
-				}		
-			}
-		
-		}
-		if(!foundCategory){
-			var notfound = `There are not categories with status ${status} and subject ${subject}`;
-			return notfound;
-			}
-		}
+                    reject(`error : ${err}`);
+
+                }else{
+
+                    console.log('<-getAllCustomers->\n' + category);
+
+                    resulve(category);
+
+                }
+
+            });
+
+        });
+    }
+
 
 	//Executed on /categorybyname (POST)
-	getCategoryByPostId(catname){
-		console.log(`post: searching category with name ${catname}`);
-		let foundCategory= false;
-		for(let i in data.categories){
+	getCategoryByPostName(catname){
+        mongoose.connect(consts.MLAB_KEY);
+        return new Promise((resulve , reject)=>{
+            group.findOne({ 'categoryname': catname }, (err , category)=>{
 
-			//Variable for name comparaision
-			var CatFound  = data.categories[i].categoryname;
-			
-			//Runs on each status and numberofbooks and compares
-			if(CatFound == catname) {
-				foundCategory = true;
-				return data.categories[i];
-			}
-		}
-		if(!foundCategory){
-			var notfound = `There are not categories with name ${status}`;
-			return notfound;
-			}
-		}
+                if(err){
 
-	//Executes on /cattegory/updatenumberofbooks (PUT)
-	changeNumOfBooks(subcatid, newnumofbooks){
-		console.log(`put: update of number of books of subcatecory id ${subcatid} category`);
-		let foundCategory= false;
-		for(let i in data.categories){
+                    reject(`error : ${err}`);
 
-			for(let j in data.categories[i].subcategories){
+                }else{
 
-				//Variable for name comparaision
-				var CatFound  = data.categories[i].subcategories[j].id;
-				
-				//Runs on each status and numberofbooks and compares
-				if(CatFound == subcatid) {
-					foundCategory = true;
+                    console.log('<-getAllCustomers->\n' + category);
 
-					//It doesnt really update the json file its only a reference to the file
-					//Its just for usage example of put request
-					data.categories[i].subcategories[i].numberofbooks = newnumofbooks;
-					return `The ${subcatid} subcategory's number of books was updated to newnumofbooks`;
-				}
-			}
-		
-		}
-		if(!foundCategory){
-			var notfound = `There are not subcategories with id ${subcatid}`;
-			return notfound;
-			}
-		}
-}	
+                    resulve(category);
+
+                }
+
+            });
+
+        });
+    }
+}
 	
 
+var exportModule = new Functionality();
 
-
-
-var x = new Functionality();
-
-module.exports = x;
+module.exports = exportModule;

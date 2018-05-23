@@ -2,7 +2,7 @@ body{
 	background-image: url("includes/amazon.png");
 	background-repeat: no-repeat;
 	background-size: contain;
-    background-position: 10% 5%;
+    background-position: 10% 2%;
 	background-color: beige;
 }
 
@@ -57,4 +57,7 @@ footer{
     text-align: center;
     font-size: 41px;
     margin-bottom: 100px;
+}
+.cat-img{
+	display: block;
 }
